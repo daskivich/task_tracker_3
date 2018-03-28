@@ -1,12 +1,12 @@
-defmodule TaskTracker3.PoTasks do
+defmodule TaskTracker3.Tasks do
   @moduledoc """
-  The PoTasks context.
+  The Tasks context.
   """
 
   import Ecto.Query, warn: false
   alias TaskTracker3.Repo
 
-  alias TaskTracker3.PoTasks.Task
+  alias TaskTracker3.Tasks.Task
 
   @doc """
   Returns the list of tasks.
@@ -19,6 +19,7 @@ defmodule TaskTracker3.PoTasks do
   """
   def list_tasks do
     Repo.all(Task)
+    |> Repo.preload(:user)
   end
 
   @doc """
@@ -35,7 +36,10 @@ defmodule TaskTracker3.PoTasks do
       ** (Ecto.NoResultsError)
 
   """
-  def get_task!(id), do: Repo.get!(Task, id)
+  def get_task!(id) do
+    Repo.get!(Task, id)
+    |> Repo.preload(:user)
+  end
 
   @doc """
   Creates a task.

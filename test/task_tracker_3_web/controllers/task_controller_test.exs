@@ -1,15 +1,15 @@
 defmodule TaskTracker3Web.TaskControllerTest do
   use TaskTracker3Web.ConnCase
 
-  alias TaskTracker3.PoTasks
-  alias TaskTracker3.PoTasks.Task
+  alias TaskTracker3.Tasks
+  alias TaskTracker3.Tasks.Task
 
   @create_attrs %{completed: true, description: "some description", time_invested: 42, title: "some title"}
   @update_attrs %{completed: false, description: "some updated description", time_invested: 43, title: "some updated title"}
   @invalid_attrs %{completed: nil, description: nil, time_invested: nil, title: nil}
 
   def fixture(:task) do
-    {:ok, task} = PoTasks.create_task(@create_attrs)
+    {:ok, task} = Tasks.create_task(@create_attrs)
     task
   end
 

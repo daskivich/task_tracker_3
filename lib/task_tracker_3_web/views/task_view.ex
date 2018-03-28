@@ -1,6 +1,7 @@
 defmodule TaskTracker3Web.TaskView do
   use TaskTracker3Web, :view
   alias TaskTracker3Web.TaskView
+  alias TaskTracker3Web.UserView
 
   def render("index.json", %{tasks: tasks}) do
     %{data: render_many(tasks, TaskView, "task.json")}
@@ -15,6 +16,7 @@ defmodule TaskTracker3Web.TaskView do
       title: task.title,
       description: task.description,
       time_invested: task.time_invested,
-      completed: task.completed}
+      completed: task.completed,
+      user: render_one(task.user, UserView, "user.json")}
   end
 end
