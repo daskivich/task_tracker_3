@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Nav from './nav';
+import Home from './home';
 import Feed from './feed';
 import Users from './users';
-import TaskForm from './task-form';
+import TaskEdit from './task-edit';
 
 export default function task_tracker_3_init() {
   let root = document.getElementById('root');
@@ -52,7 +53,7 @@ class TaskTracker3 extends React.Component {
     return (
       <Router>
         <div>
-          <Nav current_user={this.state.current_user}/> // mimics page loads
+          <Nav current_user={this.state.current_user}/>
           <Route path="/" exact={true} render={() =>
             <Home current_user={this.state.current_user} users={this.state.users} tasks={this.state.tasks} />
           } />
@@ -60,10 +61,8 @@ class TaskTracker3 extends React.Component {
             <Users users={this.state.users} />
           } />
           <Route path="/users/:user_id" render={({match}) =>
-            <Feed tasks={_.filter(this.state.tasks, (tt) =>
-              match.params.user_id == tt.user.id)
-              editable=true
-            } />
+            <Feed tasks={_.filter(this.state.tasks, (tt) => match.params.user_id == tt.user.id)}
+              editable={true} />
           } />
           <Route path="/tasks/:task_id" render={({match}) =>
             <TaskEdit task={_.find(this.state.tasks, (tt) =>

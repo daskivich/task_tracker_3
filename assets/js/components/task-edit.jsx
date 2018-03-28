@@ -13,7 +13,7 @@ export default function TaskEdit(params) {
     </FormGroup>
     <FormGroup>
       <Label for="title">Title</Label>
-      <Input plaintext>{task.title}<Input />
+      <Input plaintext>{task.title}</Input>
     </FormGroup>
     <FormGroup>
       <Label for="title">Description</Label>
