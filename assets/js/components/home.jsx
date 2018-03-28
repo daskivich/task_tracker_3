@@ -14,8 +14,8 @@ export default function Home(props) {
     } else {
       return (
         <div>
-          <TaskForm users={props.users} />
-          <Feed tasks={props.tasks} />
+          <TaskNew users={props.users} />
+          <Feed tasks={props.tasks} editable=false />
         </div>
       );
     }

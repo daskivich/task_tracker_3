@@ -61,7 +61,13 @@ class TaskTracker3 extends React.Component {
           } />
           <Route path="/users/:user_id" render={({match}) =>
             <Feed tasks={_.filter(this.state.tasks, (tt) =>
-              match.params.user_id == tt.user.id )
+              match.params.user_id == tt.user.id)
+              editable=true
+            } />
+          } />
+          <Route path="/tasks/:task_id" render={({match}) =>
+            <TaskEdit task={_.find(this.state.tasks, (tt) =>
+              match.params.task_id == tt.task.id)
             } />
           } />
         </div>

@@ -18,8 +18,9 @@ defmodule TaskTracker3Web.Router do
 
     get "/", PageController, :index
     get "/users", PageController, :index
-    get "/tasks", PageController, :index
     get "/users/:id", PageController, :index
+    get "/tasks", PageController, :index
+    get "/tasks/:id", PageController, :index
   end
 
   # Other scopes may use custom stacks.
