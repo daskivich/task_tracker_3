@@ -53,56 +53,11 @@ defmodule TaskTracker3.Users do
     if user == nil do
       nil
     else
-      Comeonin.Argon2.check_pass(user, password)
-#      |> verify_tries(user)
-    end
-
-    # case Comeonin.Argon2.check_pass(user, password) do
-    #   {:ok, user} -> user |> verify_tries()
-    #   _else       -> nil |> verify_tries()
-    # end
-  end
-
-  # allows 10 log-in attempts per hour
-  def verify_tries(check_result, user) do
-    if user.pw_last_try == nil ||
-      DateTime.diff(DateTime.utc_now(), user.pw_last_try) > 360 do
-
-      reset_tries(user)
-
-      case check_result do
+      case Comeonin.Argon2.check_pass(user, password) do
         {:ok, user} -> user
-        _else       -> one_failed_try(user)
-      end
-    else
-      if user.pw_tries > 10 do
-        nil
-      else
-        case check_result do
-          {:ok, user} -> reset_tries(user)
-          _else       -> increment_tries(user)
-        end
+        _else       -> nil
       end
     end
-  end
-
-  # resets pw_tries to 0 and pw_last_try to utc_now
-  def reset_tries(user) do
-    update_user(user, %{pw_tries: 0, pw_last_try: DateTime.utc_now()})
-    get_user(user.id)
-  end
-
-  # resets pw_tries to 1 and pw_last_try to utc_now
-  def one_failed_try(user) do
-    update_user(user, %{pw_tries: 1, pw_last_try: DateTime.utc_now()})
-    nil
-  end
-
-  # increments pw_tries and sets pw_last_try to utc_now
-  def increment_tries(user) do
-    update_user(user, %{pw_tries: user.pw_tries + 1,
-      pw_last_try: DateTime.utc_now()})
-    nil
   end
 
   @doc """
