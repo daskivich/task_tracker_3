@@ -4,10 +4,10 @@ import TaskNew from './task-new';
 import Feed from './feed';
 
 export default function Home(props) {
-  if (props.current_user == null) {
+  if (props.token == null) {
     return (
       <div>
-        // log-in and account-creation functionality
+        please log in
       </div>
     );
   } else {

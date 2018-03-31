@@ -47,13 +47,14 @@ defmodule TaskTracker3.Users do
   # method to get a user by email with password authentication from Nat's Notes
   # http://www.ccs.neu.edu/home/ntuck/courses/2018/01/cs4550/notes/17-passwords/notes.html
   def get_and_auth_user(email, password) do
+    IO.puts("entered Users.get_and_auth_user()")
     user = get_user_by_email(email)
 
     if user == nil do
       nil
     else
       Comeonin.Argon2.check_pass(user, password)
-      |> verify_tries(user)
+#      |> verify_tries(user)
     end
 
     # case Comeonin.Argon2.check_pass(user, password) do
