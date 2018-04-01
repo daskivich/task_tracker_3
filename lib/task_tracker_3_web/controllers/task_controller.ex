@@ -3,6 +3,7 @@ defmodule TaskTracker3Web.TaskController do
 
   alias TaskTracker3.Tasks
   alias TaskTracker3.Tasks.Task
+  alias TaskTracker3.Users
 
   action_fallback TaskTracker3Web.FallbackController
 
@@ -13,7 +14,9 @@ defmodule TaskTracker3Web.TaskController do
 
   def create(conn, %{"task" => task_params, "token" => token}) do
     {:ok, user_id} = Phoenix.Token.verify(conn, "auth token", token, max_age: 86400)
-    if task_params["user_id"] != user_id do
+    user = Users.get_user(user_id)
+
+    if user == nil do
       IO.inspect({:bad_match, task_params["user_id"], user_id})
       raise "hax!"
     end

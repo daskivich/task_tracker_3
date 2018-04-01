@@ -3,7 +3,7 @@ import { Button, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 import api from '../api';
 
-function TaskNew(params) {
+function TaskNew(props) {
   function update(ev) {
     let tgt = $(ev.target);
 
@@ -28,23 +28,23 @@ function TaskNew(params) {
     });
   }
 
-  let users = _.map(params.users, (uu) => <option key={uu.id} value={uu.id}>{uu.name}</option>);
+  let users = _.map(props.users, (uu) => <option key={uu.id} value={uu.id}>{uu.name}</option>);
   return <div style={{padding: "4ex"}}>
     <h2>New Task</h2>
     <FormGroup>
       <Label for="user_id">User</Label>
-      <Input type="select" name="user_id" value={params.new_task_form.user_id} onChange={update}>
+      <Input type="select" name="user_id" value={props.new_task_form.user_id} onChange={update}>
         <option></option>
         {users}
       </Input>
     </FormGroup>
     <FormGroup>
       <Label for="title">Title</Label>
-      <Input name="title" value={params.new_task_form.user_id} onChange={update} />
+      <Input name="title" value={props.new_task_form.title} onChange={update} />
     </FormGroup>
     <FormGroup>
       <Label for="description">Description</Label>
-      <Input type="textarea" name="description" value={params.new_task_form.user_id} onChange={update} />
+      <Input type="textarea" name="description" value={props.new_task_form.description} onChange={update} />
     </FormGroup>
     <Button onClick={submit} color="primary">Create Task</Button>
     <Button onClick={clear} color="secondary">Clear Form</Button>
