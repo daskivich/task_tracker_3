@@ -48,7 +48,7 @@ function Nav(props) {
 
   if (props.token) {
     nav_links =
-      <ul className="navbar-nav mr-auto">
+      <ul className="navbar-nav mr-auto col">
         <NavItem>
           <NavLink to="/" exact={true} activeClassName="active" className="nav-link">Tasks</NavLink>
         </NavItem>
@@ -64,10 +64,14 @@ function Nav(props) {
   }
 
   return (
-    <nav className="navbar navbar-dark bg-dark navbar-expand">
-      <span className="navbar-brand">TaskTracker</span>
-      {nav_links}
-      <span className="navbar-text">{session_info}</span>
+    <nav className="navbar navbar-dark bg-dark navbar-expand row">
+      <span className="col">
+        <span className="row">
+          <span className="navbar-brand col">TaskTracker</span>
+          {nav_links}
+        </span>
+      </span>
+      <span className="navbar-text text-right col">{session_info}</span>
     </nav>
   );
 }
