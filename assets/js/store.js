@@ -12,11 +12,13 @@ import deepFreeze from 'deep-freeze';
  *     description: string,
  *     token: string,
  *   },
- *   token: string,
+ *   token: {
+ *     token: string,
+ *     user: User
+ *   }
  *   login: {
  *     email: string,
- *     password: string,
- *     confirmation: string
+ *     password: string
  *   }
  * }
  *

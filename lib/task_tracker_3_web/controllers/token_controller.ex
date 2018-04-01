@@ -6,11 +6,7 @@ defmodule TaskTracker3Web.TokenController do
   action_fallback TaskTracker3Web.FallbackController
 
   def create(conn, %{"email" => email, "password" => password}) do
-    IO.puts("entered TokenController.create()")
-
     with {:ok, %User{} = user} <- TaskTracker3.Users.get_and_auth_user(email, password) do
-      IO.write("user name: ")
-      IO.puts(user.name)
       token = Phoenix.Token.sign(conn, "auth token", user.id)
       conn
       |> put_status(:created)

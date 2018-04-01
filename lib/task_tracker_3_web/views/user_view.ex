@@ -14,8 +14,6 @@ defmodule TaskTracker3Web.UserView do
     %{id: user.id,
       name: user.name,
       email: user.email,
-      password_hash: user.password_hash,
-      pw_tries: user.pw_tries,
-      pw_last_try: user.pw_last_try}
+      password_hash: user.password_hash}
   end
 end

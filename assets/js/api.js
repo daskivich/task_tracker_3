@@ -9,7 +9,7 @@ class TheServer {
       success: (resp) => {
         store.dispatch({
           type: 'TASKS_LIST',
-          posts: resp.data,
+          tasks: resp.data,
         });
       },
     });
