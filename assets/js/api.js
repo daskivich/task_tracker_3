@@ -1,11 +1,12 @@
 import store from './store';
 
 class TheServer {
-  request_tasks() {
+  request_tasks(data) {
     $.ajax("/api/v1/tasks", {
       method: "get",
       dataType: "json",
       contentType: "application/json; charset=UTF-8",
+      data: JSON.stringify({ token: data }),
       success: (resp) => {
         store.dispatch({
           type: 'TASKS_LIST',
@@ -53,8 +54,10 @@ class TheServer {
       success: (resp) => {
         store.dispatch({
           type: 'SET_TOKEN',
-          token: resp,
+          token: resp
         });
+        this.request_tasks();
+        this.request_users();
       },
     });
   }

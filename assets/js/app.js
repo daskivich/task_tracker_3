@@ -25,7 +25,5 @@ import api from './api';
 
 import task_tracker_3_init from "./components/task_tracker_3";
 $(function() {
-  api.request_tasks();
-  api.request_users();
   task_tracker_3_init(store);
 });
