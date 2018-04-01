@@ -37,7 +37,7 @@ let LoginForm = connect(({login}) => {return {login};})((props) => {
 
 let Session = connect(({token}) => {return {token};})((props) => {
   return <div className="navbar-text">
-    User id = { props.token.user_id }
+    hello, {props.token.user_name}!
   </div>;
 });
 

@@ -39,7 +39,7 @@ class TheServer {
       success: (resp) => {
         store.dispatch({
           type: 'ADD_TASK',
-          post: resp.data,
+          task: resp.data,
         });
       },
     });

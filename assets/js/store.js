@@ -10,12 +10,13 @@ import deepFreeze from 'deep-freeze';
  *     user_id: integer,
  *     title: string,
  *     description: string,
- *     token: string,
+ *     token: string
  *   },
  *   token: {
  *     token: string,
- *     user: User
- *   }
+ *     user_id: integer,
+       user_name: string
+ *   },
  *   login: {
  *     email: string,
  *     password: string
