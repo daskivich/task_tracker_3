@@ -53,10 +53,12 @@ defmodule TaskTracker3.Users do
     if user == nil do
       nil
     else
-      case Comeonin.Argon2.check_pass(user, password) do
-        {:ok, user} -> user
-        _else       -> nil
-      end
+      Comeonin.Argon2.check_pass(user, password)
+
+      # case Comeonin.Argon2.check_pass(user, password) do
+      #   {:ok, user} -> user
+      #   _else       -> nil
+      # end
     end
   end
 

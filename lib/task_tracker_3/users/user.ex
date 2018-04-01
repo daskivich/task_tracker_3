@@ -6,8 +6,6 @@ defmodule TaskTracker3.Users.User do
     field :email, :string
     field :name, :string
     field :password_hash, :string # hash value of this user's password
-    field :pw_last_try, :utc_datetime # time of last attempted log-in
-    field :pw_tries, :integer # a running count of attempted log-ins
 
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true # must match password
@@ -18,7 +16,7 @@ defmodule TaskTracker3.Users.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:name, :email, :password, :password_confirmation, :pw_tries, :pw_last_try])
+    |> cast(attrs, [:name, :email, :password, :password_confirmation])
     |> validate_confirmation(:password)
     |> validate_password(:password)
     |> put_pass_hash()
