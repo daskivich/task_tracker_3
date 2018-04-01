@@ -43,14 +43,20 @@ let Session = connect(({token}) => {return {token};})((props) => {
 
 
 function Nav(props) {
+  let to_my_tasks;
   let nav_links;
   let session_info;
 
   if (props.token) {
+    to_my_tasks = "/users/" + props.token.user_id;
+
     nav_links =
-      <ul className="navbar-nav mr-auto col">
+      <ul className="navbar-nav mr-auto">
         <NavItem>
           <NavLink to="/" exact={true} activeClassName="active" className="nav-link">Tasks</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to={to_my_tasks} href="#" activeClassName="active" className="nav-link">My Tasks</NavLink>
         </NavItem>
         <NavItem>
           <NavLink to="/users" href="#" activeClassName="active" className="nav-link">Users</NavLink>
