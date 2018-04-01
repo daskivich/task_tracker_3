@@ -4,10 +4,14 @@ import TaskNew from './task-new';
 import Feed from './feed';
 
 export default function Home(props) {
-  return (
-    <div>
-      <TaskNew users={props.users} />
-      <Feed tasks={props.tasks} editable={false} />
-    </div>
-  );
+  if (props.users.length < 1) {
+    return (<div>Please log in.</div>);
+  } else {
+    return (
+      <div>
+        <TaskNew users={props.users} />
+        <Feed tasks={props.tasks} editable={false} />
+      </div>
+    );
+  }
 }

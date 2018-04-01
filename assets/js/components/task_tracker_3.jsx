@@ -18,9 +18,9 @@ let TaskTracker3 = connect((state) => state)((props) => {
   return (
     <Router>
       <div>
-        <Nav current_user={props.current_user}/>
+        <Nav />
         <Route path="/" exact={true} render={() =>
-          <Home current_user={props.current_user} users={props.users} tasks={props.tasks} />
+          <Home token={props.token} users={props.users} tasks={props.tasks} />
         } />
         <Route path="/users" exact={true} render={() =>
           <Users users={props.users} />
