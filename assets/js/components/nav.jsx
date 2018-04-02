@@ -38,9 +38,19 @@ let LoginForm = connect(({login}) => {return {login};})((props) => {
 let Session = connect(({token}) => {return {token};})((props) => {
   return <div className="navbar-text">
     hello, {props.token.user_name}!
+    <Logout />
   </div>;
 });
 
+let Logout = connect(({token}) => {return {token};})((props) => {
+  function submit_logout(ev) {
+    props.dispatch({
+      type: 'LOG_OUT'
+    });
+  }
+
+  return <Button onClick={submit_logout}>Log Out</Button>;
+});
 
 function Nav(props) {
   let to_my_tasks;
