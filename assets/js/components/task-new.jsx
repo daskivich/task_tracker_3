@@ -19,6 +19,9 @@ function TaskNew(props) {
 
   function submit(ev) {
     api.submit_task(props.new_task_form);
+    props.dispatch({
+      type: 'CLEAR_NEW_TASK_FORM'
+    });
     console.log(props.new_task_form);
   }
 

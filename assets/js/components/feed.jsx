@@ -3,13 +3,12 @@ import Task from './task';
 import { connect } from 'react-redux';
 
 function Feed(props) {
-  var tasks;
-  var all_users = props.all_users;
-
   if (props.token == null) {
     return <div>Please log in.</div>
   }
 
+  var tasks;
+  var all_users = props.all_users;
   var current_user = props.match_user_id == props.token.user_id;
 
   if (all_users) {

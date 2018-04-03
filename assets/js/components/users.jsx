@@ -8,14 +8,18 @@ function User(props) {
 
 function Users(props) {
   let users = _.map(props.users, (uu) => <User key={uu.id} user={uu} />);
-  return <div>
-    {users}
-  </div>;
+
+  if (props.token == null) {
+    return <div>Please log in.</div>
+  } else {
+    return <div>{users}</div>
+  }
 }
 
 function state2props(state) {
   return {
-    users: state.users
+    users: state.users,
+    token: state.token
   };
 }
 
