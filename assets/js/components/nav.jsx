@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { Form, FormGroup, NavItem, Input, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import api from '../api';
@@ -49,7 +49,7 @@ let Logout = connect(({token}) => {return {token};})((props) => {
     });
   }
 
-  return <Button onClick={submit_logout}>Log Out</Button>;
+  return <Link to="/" onClick={submit_logout}>Log Out</Link>;
 });
 
 function Nav(props) {
