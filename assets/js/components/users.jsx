@@ -1,13 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-function User(params) {
-  return <p>{params.user.name} - <Link to={"/users/" + params.user.id}>tasks</Link></p>;
+function User(props) {
+  return <p>{props.user.name} - <Link to={"/users/" + props.user.id}>tasks</Link></p>;
 }
 
-export default function Users(params) {
-  let users = _.map(params.users, (uu) => <User key={uu.id} user={uu} />);
+function Users(props) {
+  let users = _.map(props.users, (uu) => <User key={uu.id} user={uu} />);
   return <div>
     {users}
   </div>;
 }
+
+function state2props(state) {
+  return {
+    users: state.users
+  };
+}
+
+export default connect(state2props)(Users);

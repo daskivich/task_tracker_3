@@ -11,7 +11,7 @@ function Home(props) {
     return (
       <div>
         <TaskNew />
-        <Feed tasks={props.tasks} editable={false} />
+        <Feed all_users={true} match_user_id={null}/>
       </div>
     );
   }
@@ -19,7 +19,7 @@ function Home(props) {
 
 function state2props(state) {
   return {
-    token: state.users
+    users: state.users
   };
 }
 

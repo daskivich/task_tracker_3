@@ -26,8 +26,7 @@ let TaskTracker3 = connect((state) => state)((props) => {
           <Users users={props.users} />
         } />
         <Route path="/users/:user_id" render={({match}) =>
-          <Feed tasks={_.filter(props.tasks, (tt) => match.params.user_id == tt.user.id)}
-            editable={true} />
+          <Feed all_users={false} match_user_id={match.params.user_id} />
         } />
         <Route path="/tasks/:task_id" render={({match}) =>
           <TaskEdit task={_.find(props.tasks, (tt) =>

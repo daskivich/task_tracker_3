@@ -2,19 +2,24 @@ import React from 'react';
 import { Card, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-export default function Task(params) {
-  let task = params.task;
+export default function Task(props) {
+  let task = props.task;
 
-  if (params.editable) {
+  let shared_elements =
+    <span>
+      <p>{task.title}</p>
+      <p>Assigned to <b>{task.user.name}</b></p>
+      <p>{task.description}</p>
+      <p>Time invested (in minutes): {task.time_invested}</p>
+      <p>Completed: {task.completed}</p>
+    </span>;
+
+  if (props.editable) {
     return <Card>
       <CardBody>
         <div>
-          <p>{task.title}</p>
-          <p>Assigned to <b>{task.user.name}</b></p>
-          <p>{task.description}</p>
-          <p>Time invested (in minutes): {task.time_invested}</p>
-          <p>Completed: {task.completed}</p>
-          <p><Link to={"/tasks/" + params.task.id}>edit</Link></p>
+          {shared_elements}
+          <p><Link to={"/tasks/" + props.task.id}>edit</Link></p>
         </div>
       </CardBody>
     </Card>;
@@ -22,11 +27,7 @@ export default function Task(params) {
     return <Card>
       <CardBody>
         <div>
-          <p>{task.title}</p>
-          <p>Assigned to <b>{task.user.name}</b></p>
-          <p>{task.description}</p>
-          <p>Time invested (in minutes): {task.time_invested}</p>
-          <p>Completed: {task.completed}</p>
+          {shared_elements}
         </div>
       </CardBody>
     </Card>;
