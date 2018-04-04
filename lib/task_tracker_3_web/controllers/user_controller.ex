@@ -11,7 +11,14 @@ defmodule TaskTracker3Web.UserController do
     render(conn, "index.json", users: users)
   end
 
-  def create(conn, %{"user" => user_params}) do
+  def create(conn, %{"user_params" => user_params}) do
+    user = Users.get_user_by_email(user_params["email"])
+
+    if user != nil do
+      IO.inspect({:bad_match, user_params["email"], user_params["email"]})
+      raise "hax!"
+    end
+
     with {:ok, %User{} = user} <- Users.create_user(user_params) do
       conn
       |> put_status(:created)

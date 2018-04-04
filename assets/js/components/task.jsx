@@ -60,7 +60,6 @@ function Task(props) {
 }
 
 function state2props(state) {
-  console.log("rerender@Task", state);
   return {};
 }
 

@@ -1,12 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import UserNew from './user-new';
 import TaskNew from './task-new';
 import Feed from './feed';
 
 function Home(props) {
   if (props.users.length < 1) {
-    return (<div>Please log in.</div>);
+    return (
+      <div>
+        Please log in above or create an account below.
+        <UserNew />
+      </div>
+    );
   } else {
     return (
       <div>
