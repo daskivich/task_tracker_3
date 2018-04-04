@@ -51,7 +51,7 @@ function UserEdit(props) {
   }
 
   // TODO: fix cancel_path
-  let cancel_path = "/";
+  let path = "/";
 
   return <div style={{padding: "4ex"}}>
     <h2>Edit Account</h2>
@@ -71,8 +71,8 @@ function UserEdit(props) {
       <Label for="password_confirmation">Confirm Password</Label>
       <Input type="password" name="password_confirmation" value={props.edit_user_form.password_confirmation} onChange={update} />
     </FormGroup>
-    <Button onClick={submit} color="primary">Submit Changes</Button>
-    <Link to={cancel_path} onClick={clear} color="secondary">Cancel</Link>
+    <Link to={path} onClick={submit} color="primary">Submit Changes</Link>
+    <Link to={path} onClick={clear} color="secondary">Cancel</Link>
   </div>;
 }
 

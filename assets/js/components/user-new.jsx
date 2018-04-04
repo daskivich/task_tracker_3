@@ -50,7 +50,7 @@ function UserNew(props) {
       <Input type="password" name="password_confirmation" value={props.new_user_form.password_confirmation} onChange={update} />
     </FormGroup>
     <Button onClick={submit} color="primary">Create Account</Button>
-    <Button onClick={clear} color="secondary">Clear Form</Button>
+    <Button onClick={clear} color="secondary">Cancel</Button>
   </div>;
 }
 

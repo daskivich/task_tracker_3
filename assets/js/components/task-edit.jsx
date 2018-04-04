@@ -59,7 +59,7 @@ function TaskEdit(props) {
 
   let increments = _.range(0, 10080, 15);
   let options = _.map(increments, (ii) => <option key={ii}>{ii}</option>);
-  let cancel_path = "/users/" + props.token.user_id;
+  let path = "/users/" + props.token.user_id;
   let complete;
   let incomplete;
 
@@ -110,8 +110,8 @@ function TaskEdit(props) {
         </Label>
       </FormGroup>
     </FormGroup>
-    <Button onClick={submit} color="primary">Submit Changes</Button>
-    <Link to={cancel_path} onClick={clear}>Cancel</Link>
+    <Link to={path} onClick={submit} color="primary">Submit Changes</Link>
+    <Link to={path} onClick={clear}>Cancel</Link>
   </div>;
 }
 

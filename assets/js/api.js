@@ -36,10 +36,10 @@ class TheServer {
       contentType: "application/json; charset=UTF-8",
       data: JSON.stringify({ user_params: data }),
       success: (resp) => {
-        store.dispatch({
-          type: 'ADD_USER',
-          task: resp.data,
-        });
+        // store.dispatch({
+        //   type: 'ADD_USER',
+        //   task: resp.data,
+        // });
       },
     });
   }
@@ -68,10 +68,6 @@ class TheServer {
       contentType: "application/json; charset=UTF-8",
       data: JSON.stringify({ token: data.token, user_params: data.user_params }),
       success: (resp) => {
-        // store.dispatch({
-        //   type: 'ADD_TASK',
-        //   task: resp.data,
-        // });
         this.request_users();
       },
     });
@@ -86,10 +82,6 @@ class TheServer {
       contentType: "application/json; charset=UTF-8",
       data: JSON.stringify({ token: data.token, task_params: data.task_params }),
       success: (resp) => {
-        // store.dispatch({
-        //   type: 'ADD_TASK',
-        //   task: resp.data,
-        // });
         this.request_tasks();
       },
     });
