@@ -32,6 +32,7 @@ defmodule TaskTracker3Web.UserController do
     render(conn, "show.json", user: user)
   end
 
+  # verifies that the token user matches the user to be updated
   def update(conn, %{"token" => token, "user_params" => user_params}) do
     {:ok, user_id} = Phoenix.Token.verify(conn, "auth token", token, max_age: 86400)
     user = Users.get_user(user_id)

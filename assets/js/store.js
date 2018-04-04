@@ -30,7 +30,6 @@ import deepFreeze from 'deep-freeze';
 *     password: string
 *   }
 * }
-*
 * */
 
 function tasks(state = [], action) {
@@ -173,12 +172,10 @@ function login(state = empty_login, action) {
 }
 
 function root_reducer(state0, action) {
-  console.log("reducer", action);
   // {tasks, users, form} is ES6 shorthand for
   // {tasks: tasks, users: users, form: form}
   let reducer = combineReducers({tasks, users, new_task_form, edit_task_form, new_user_form, edit_user_form, token, login});
   let state1 = reducer(state0, action);
-  console.log("state1", state1);
   return deepFreeze(state1);
 };
 

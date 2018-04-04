@@ -12,7 +12,7 @@ defmodule TaskTracker3Web.TaskController do
     render(conn, "index.json", tasks: tasks)
   end
 
-  # token might just be a field in the task_params???
+  # verifies that the token user is an authentic user before creation
   def create(conn, %{"task_params" => task_params, "token" => token}) do
     {:ok, user_id} = Phoenix.Token.verify(conn, "auth token", token, max_age: 86400)
     user = Users.get_user(user_id)
@@ -35,6 +35,7 @@ defmodule TaskTracker3Web.TaskController do
     render(conn, "show.json", task: task)
   end
 
+  # verifies that the token user matches the task user before updating
   def update(conn, %{"token" => token, "task_params" => task_params}) do
     {:ok, user_id} = Phoenix.Token.verify(conn, "auth token", token, max_age: 86400)
     task = Tasks.get_task(task_params["id"])

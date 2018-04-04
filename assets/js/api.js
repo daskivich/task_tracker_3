@@ -35,12 +35,7 @@ class TheServer {
       dataType: "json",
       contentType: "application/json; charset=UTF-8",
       data: JSON.stringify({ user_params: data }),
-      success: (resp) => {
-        // store.dispatch({
-        //   type: 'ADD_USER',
-        //   task: resp.data,
-        // });
-      },
+      success: (resp) => {},
     });
   }
 

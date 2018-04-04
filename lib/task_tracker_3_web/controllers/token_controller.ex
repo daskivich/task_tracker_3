@@ -5,6 +5,7 @@ defmodule TaskTracker3Web.TokenController do
 
   action_fallback TaskTracker3Web.FallbackController
 
+  # creates a token for future authentication
   def create(conn, %{"email" => email, "password" => password}) do
     with {:ok, %User{} = user} <- TaskTracker3.Users.get_and_auth_user(email, password) do
       token = Phoenix.Token.sign(conn, "auth token", user.id)
