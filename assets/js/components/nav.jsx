@@ -4,6 +4,7 @@ import { Form, FormGroup, NavItem, Input, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import api from '../api';
 
+// pattern match, pulling login from the state via {login}
 let LoginForm = connect(({login}) => {return {login};})((props) => {
   function update(ev) {
     let tgt = $(ev.target);
@@ -16,6 +17,7 @@ let LoginForm = connect(({login}) => {return {login};})((props) => {
   }
 
   function create_token(ev) {
+    ev.preventDefault(); // when submitting a form
     api.submit_login(props.login);
     console.log(props.login);
   }
@@ -35,6 +37,7 @@ let LoginForm = connect(({login}) => {return {login};})((props) => {
   </div>;
 });
 
+// pattern match out the token from the state via {token}
 let Session = connect(({token}) => {return {token};})((props) => {
   return <div className="navbar-text">
     hello, {props.token.user_name}!

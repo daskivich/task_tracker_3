@@ -29,9 +29,7 @@ let TaskTracker3 = connect((state) => state)((props) => {
           <Feed all_users={false} match_user_id={match.params.user_id} />
         } />
         <Route path="/tasks/:task_id" render={({match}) =>
-          <TaskEdit task={_.find(props.tasks, (tt) =>
-            match.params.task_id == tt.task.id)
-          } />
+          <TaskEdit match_task_id={match.params.task_id} />
         } />
       </div>
     </Router>

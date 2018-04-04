@@ -1,12 +1,11 @@
 import store from './store';
 
 class TheServer {
-  request_tasks(data) {
+  request_tasks() {
     $.ajax("/api/v1/tasks", {
       method: "get",
       dataType: "json",
       contentType: "application/json; charset=UTF-8",
-      data: JSON.stringify({ token: data }),
       success: (resp) => {
         store.dispatch({
           type: 'TASKS_LIST',
@@ -41,6 +40,24 @@ class TheServer {
           type: 'ADD_TASK',
           task: resp.data,
         });
+      },
+    });
+  }
+
+  update_task(data) {
+    let path = "/api/v1/tasks/" + data.task_params.id;
+
+    $.ajax(path, {
+      method: "patch",
+      dataType: "json",
+      contentType: "application/json; charset=UTF-8",
+      data: JSON.stringify({ token: data.token, task_params: data.task_params }),
+      success: (resp) => {
+        // store.dispatch({
+        //   type: 'ADD_TASK',
+        //   task: resp.data,
+        // });
+        this.request_tasks();
       },
     });
   }
