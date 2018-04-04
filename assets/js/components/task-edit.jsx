@@ -110,7 +110,7 @@ function TaskEdit(props) {
         </Label>
       </FormGroup>
     </FormGroup>
-    <Button onClick={submit} color="primary">Update Task</Button>
+    <Button onClick={submit} color="primary">Submit Changes</Button>
     <Link to={cancel_path} onClick={clear}>Cancel</Link>
   </div>;
 }

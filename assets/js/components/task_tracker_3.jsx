@@ -8,6 +8,7 @@ import Home from './home';
 import Feed from './feed';
 import Users from './users';
 import TaskEdit from './task-edit';
+import UserEdit from './user-edit';
 
 export default function task_tracker_3_init(store) {
   let root = document.getElementById('root');
@@ -25,11 +26,14 @@ let TaskTracker3 = connect((state) => state)((props) => {
         <Route path="/users" exact={true} render={() =>
           <Users users={props.users} />
         } />
+        <Route path="/users/edit/:user_id" render={() =>
+          <UserEdit />
+        } />
         <Route path="/users/:user_id" render={({match}) =>
           <Feed all_users={false} match_user_id={match.params.user_id} />
         } />
-        <Route path="/tasks/:task_id" render={({match}) =>
-          <TaskEdit match_task_id={match.params.task_id} />
+        <Route path="/tasks/:task_id" render={() =>
+          <TaskEdit />
         } />
       </div>
     </Router>

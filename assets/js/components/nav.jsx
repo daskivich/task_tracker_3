@@ -37,10 +37,36 @@ let LoginForm = connect(({login}) => {return {login};})((props) => {
   </div>;
 });
 
-// pattern match out the token from the state via {token}
-let Session = connect(({token}) => {return {token};})((props) => {
+function state2sessionProps(state) {
+  return {
+    token: state.token,
+    users: state.users
+  };
+}
+
+let Session = connect(state2sessionProps)((props) => {
+  let user = _.find(props.users, (uu) => uu.id == props.token.user_id);
+
+  function select(ev) {
+    let data = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      password: "",
+      password_confirmation: ""
+    };
+
+    props.dispatch({
+      type: 'SELECT_USER_FOR_EDITING',
+      data: data
+    });
+  }
+
+  let path = "/users/edit/" + props.token.user_id;
+
   return <div className="navbar-text">
     hello, {props.token.user_name}!
+    <Link to={path} onClick={select}>MyAccount</Link>
     <Logout />
   </div>;
 });

@@ -98,6 +98,29 @@ function new_task_form(state = empty_new_task_form, action) {
   }
 }
 
+let empty_edit_user_form = {
+  id: "",
+  name: "",
+  email: "",
+  password: "",
+  password_confirmation: ""
+};
+
+function edit_user_form(state = empty_edit_user_form, action) {
+  switch (action.type) {
+    case 'SELECT_USER_FOR_EDITING':
+      return Object.assign({}, state, action.data);
+    case 'UPDATE_EDIT_USER_FORM':
+      return Object.assign({}, state, action.data);
+    case 'CLEAR_EDIT_USER_FORM':
+      return empty_edit_user_form;
+    case 'LOG_OUT':
+      return empty_edit_user_form;
+    default:
+      return state;
+  }
+}
+
 let empty_edit_task_form = {
   id: "",
   user_id: "",
@@ -153,7 +176,7 @@ function root_reducer(state0, action) {
   console.log("reducer", action);
   // {tasks, users, form} is ES6 shorthand for
   // {tasks: tasks, users: users, form: form}
-  let reducer = combineReducers({tasks, users, new_task_form, edit_task_form, new_user_form, token, login});
+  let reducer = combineReducers({tasks, users, new_task_form, edit_task_form, new_user_form, edit_user_form, token, login});
   let state1 = reducer(state0, action);
   console.log("state1", state1);
   return deepFreeze(state1);

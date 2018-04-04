@@ -32,8 +32,14 @@ defmodule TaskTracker3Web.UserController do
     render(conn, "show.json", user: user)
   end
 
-  def update(conn, %{"id" => id, "user" => user_params}) do
-    user = Users.get_user!(id)
+  def update(conn, %{"token" => token, "user_params" => user_params}) do
+    {:ok, user_id} = Phoenix.Token.verify(conn, "auth token", token, max_age: 86400)
+    user = Users.get_user(user_id)
+
+    if user == nil || user.id != user_params["id"] do
+      IO.inspect({:bad_match, user_params["id"], user.id})
+      raise "hax!"
+    end
 
     with {:ok, %User{} = user} <- Users.update_user(user, user_params) do
       render(conn, "show.json", user: user)

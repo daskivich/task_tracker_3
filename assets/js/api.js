@@ -59,6 +59,24 @@ class TheServer {
     });
   }
 
+  update_user(data) {
+    let path = "/api/v1/users/" + data.user_params.id;
+
+    $.ajax(path, {
+      method: "patch",
+      dataType: "json",
+      contentType: "application/json; charset=UTF-8",
+      data: JSON.stringify({ token: data.token, user_params: data.user_params }),
+      success: (resp) => {
+        // store.dispatch({
+        //   type: 'ADD_TASK',
+        //   task: resp.data,
+        // });
+        this.request_users();
+      },
+    });
+  }
+
   update_task(data) {
     let path = "/api/v1/tasks/" + data.task_params.id;
 
