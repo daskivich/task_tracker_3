@@ -2,6 +2,14 @@ import React from 'react';
 import Task from './task';
 import { connect } from 'react-redux';
 
+// a list of tasks
+// if the "all_users" prop is passed as true,
+// the list includes tasks assigned to all users
+// if the "all_users" prop is passed as false,
+// the list includes only tasks assigned
+// to the user specified by the match_user_id prop
+// if the matching user is the current user,
+// an edit link is included with each task
 function Feed(props) {
   if (props.token == null) {
     return <div>Please log in.</div>

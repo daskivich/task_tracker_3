@@ -3,6 +3,7 @@ import { Button, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 import api from '../api';
 
+// form to create a new task
 function TaskNew(props) {
   function update(ev) {
     let tgt = $(ev.target);
@@ -37,24 +38,28 @@ function TaskNew(props) {
   }
 
   let users = _.map(props.users, (uu) => <option key={uu.id} value={uu.id}>{uu.name}</option>);
+
   return <div>
     <h2>New Task</h2>
     <div className="card">
       <div className="card-body">
         <FormGroup>
           <Label for="user_id">user:</Label>
-          <Input type="select" name="user_id" value={props.new_task_form.user_id} onChange={update}>
+          <Input type="select" name="user_id"
+            value={props.new_task_form.user_id} onChange={update}>
             <option></option>
             {users}
           </Input>
         </FormGroup>
         <FormGroup>
           <Label for="title">title:</Label>
-          <Input name="title" value={props.new_task_form.title} onChange={update} />
+          <Input name="title" value={props.new_task_form.title}
+            onChange={update} />
         </FormGroup>
         <FormGroup>
           <Label for="description">description:</Label>
-          <Input type="textarea" name="description" value={props.new_task_form.description} onChange={update} />
+          <Input type="textarea" name="description"
+            value={props.new_task_form.description} onChange={update} />
         </FormGroup>
         <Button onClick={submit} color="primary">create task</Button>
         <Button onClick={clear} color="secondary">clear form</Button>

@@ -3,6 +3,7 @@ import { Button, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 import api from '../api';
 
+// form to create a new user
 function UserNew(props) {
   function update(ev) {
     let tgt = $(ev.target);
@@ -40,15 +41,18 @@ function UserNew(props) {
       </FormGroup>
       <FormGroup>
         <Label for="email">email:</Label>
-        <Input type="email" name="email" value={props.new_user_form.email} onChange={update} />
+        <Input type="email" name="email" value={props.new_user_form.email}
+          onChange={update} />
       </FormGroup>
       <FormGroup>
         <Label for="password">password:</Label>
-        <Input type="password" name="password" value={props.new_user_form.password} onChange={update} />
+        <Input type="password" name="password"
+          value={props.new_user_form.password} onChange={update} />
       </FormGroup>
       <FormGroup>
         <Label for="password_confirmation">confirm password:</Label>
-        <Input type="password" name="password_confirmation" value={props.new_user_form.password_confirmation} onChange={update} />
+        <Input type="password" name="password_confirmation"
+          value={props.new_user_form.password_confirmation} onChange={update} />
       </FormGroup>
       <Button onClick={submit} color="primary">create account</Button>
       <Button onClick={clear} color="secondary">cancel</Button>

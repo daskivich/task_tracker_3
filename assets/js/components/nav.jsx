@@ -4,7 +4,6 @@ import { Form, FormGroup, NavItem, Input, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import api from '../api';
 
-// pattern match, pulling login from the state via {login}
 let LoginForm = connect(({login}) => {return {login};})((props) => {
   function update(ev) {
     let tgt = $(ev.target);
@@ -17,7 +16,6 @@ let LoginForm = connect(({login}) => {return {login};})((props) => {
   }
 
   function create_token(ev) {
-    ev.preventDefault(); // when submitting a form
     api.submit_login(props.login);
     console.log(props.login);
   }
@@ -53,10 +51,21 @@ let Logout = connect(({token}) => {return {token};})((props) => {
   }
 
   return <NavItem>
-    <NavLink to="/" href="#" onClick={submit_logout} activeClassName="active" className="nav-link">logOut</NavLink>
+    <NavLink to="/" href="#" onClick={submit_logout} activeClassName="active"
+      className="nav-link">logOut</NavLink>
   </NavItem>;
 });
 
+// if a user has not yet logged in, the nav bar has the app name
+// and an inline log-in form
+// if a user has logged in, the nav bar has the app name,
+// a list of navigation links, and a greeting with that user's name
+// nav links...
+// - tasks: new task form and a list of all tasks for all users
+// - myTasks: a list of tasks assigned to the current user
+// - users: a list of users
+// - myAccount: a form for the current user to edit his/her account info
+// - logOut: clikc this link to log out
 function Nav(props) {
   let to_my_tasks;
   let path;
@@ -79,6 +88,7 @@ function Nav(props) {
     });
   }
 
+  // include navigation links only if a user has logged in
   if (props.token) {
     to_my_tasks = "/users/" + props.token.user_id;
     path = "/users/edit/" + props.token.user_id;
@@ -87,16 +97,20 @@ function Nav(props) {
     nav_links =
       <ul className="navbar-nav mr-auto">
         <NavItem>
-          <NavLink to="/" exact={true} activeClassName="active" className="nav-link">tasks</NavLink>
+          <NavLink to="/" exact={true} activeClassName="active"
+            className="nav-link">tasks</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to={to_my_tasks} href="#" activeClassName="active" className="nav-link">myTasks</NavLink>
+          <NavLink to={to_my_tasks} href="#" activeClassName="active"
+            className="nav-link">myTasks</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/users" href="#" activeClassName="active" className="nav-link">users</NavLink>
+          <NavLink to="/users" href="#" activeClassName="active"
+            className="nav-link">users</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to={path} href="#" onClick={select} activeClassName="active" className="nav-link">myAccount</NavLink>
+          <NavLink to={path} href="#" onClick={select} activeClassName="active"
+            className="nav-link">myAccount</NavLink>
         </NavItem>
         <Logout />
       </ul>;

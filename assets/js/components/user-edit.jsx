@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import api from '../api';
 
+// a form to edit user information
 function UserEdit(props) {
   if (props.token == null) {
     return <div>Please log in.</div>
@@ -50,7 +51,6 @@ function UserEdit(props) {
     });
   }
 
-  // TODO: fix cancel_path
   let path = "/";
 
   return <div className="card">
@@ -58,19 +58,24 @@ function UserEdit(props) {
       <h2>Edit Account</h2>
       <FormGroup>
         <Label for="name">name:</Label>
-        <Input name="name" value={props.edit_user_form.name} onChange={update} />
+        <Input name="name" value={props.edit_user_form.name}
+          onChange={update} />
       </FormGroup>
       <FormGroup>
         <Label for="email">email:</Label>
-        <Input type="email" name="email" value={props.edit_user_form.email} onChange={update} />
+        <Input type="email" name="email" value={props.edit_user_form.email}
+          onChange={update} />
       </FormGroup>
       <FormGroup>
         <Label for="password">password:</Label>
-        <Input type="password" name="password" value={props.edit_user_form.password} onChange={update} />
+        <Input type="password" name="password"
+          value={props.edit_user_form.password} onChange={update} />
       </FormGroup>
       <FormGroup>
         <Label for="password_confirmation">confirm password:</Label>
-        <Input type="password" name="password_confirmation" value={props.edit_user_form.password_confirmation} onChange={update} />
+        <Input type="password" name="password_confirmation"
+          value={props.edit_user_form.password_confirmation}
+          onChange={update} />
       </FormGroup>
       <Link to={path} onClick={submit} className="bp">submit changes</Link>
       <Link to={path} onClick={clear} className="bs">cancel</Link>

@@ -5,6 +5,8 @@ import UserNew from './user-new';
 import TaskNew from './task-new';
 import Feed from './feed';
 
+// if the user hasn't yet logged in, displays a new user form
+// if the user has logged in, displays a new task form and a list of all tasks
 function Home(props) {
   if (props.users.length < 1) {
     return (

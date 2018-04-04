@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import api from '../api';
 
+// a form to edit a task
 function TaskEdit(props) {
   if (props.token == null) {
     return <div>Please log in.</div>
@@ -19,6 +20,7 @@ function TaskEdit(props) {
 
     let data = {};
 
+    // completed value must be converted from string to boolean
     if (attr == "completed") {
       if (val == "true") {
         val = true;
@@ -63,6 +65,7 @@ function TaskEdit(props) {
   let complete;
   let incomplete;
 
+  // initialize radio button selection to current status
   if (props.edit_task_form.completed) {
     complete = true;
     incomplete = false;
@@ -93,7 +96,8 @@ function TaskEdit(props) {
         </FormGroup>
         <FormGroup>
           <Label for="time_invested">minutes invested:</Label>
-          <Input type="select" name="time_invested" value={props.edit_task_form.time_invested} onChange={update}>
+          <Input type="select" name="time_invested"
+            value={props.edit_task_form.time_invested} onChange={update}>
             {options}
           </Input>
         </FormGroup>
@@ -101,13 +105,15 @@ function TaskEdit(props) {
           Status
           <FormGroup check>
             <Label check>
-              <Input type="radio" name="completed" value="true" checked={complete} onChange={update} />{' '}
+              <Input type="radio" name="completed" value="true"
+                checked={complete} onChange={update} />{' '}
               complete
             </Label>
           </FormGroup>
           <FormGroup check>
             <Label check>
-              <Input type="radio" name="completed" value="false" checked={incomplete} onChange={update} />{' '}
+              <Input type="radio" name="completed" value="false"
+                checked={incomplete} onChange={update} />{' '}
               incomplete
             </Label>
           </FormGroup>

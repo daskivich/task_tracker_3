@@ -44,7 +44,9 @@ function Task(props) {
       <CardBody>
         <div>
           {shared_elements}
-          <p><Link to={"/tasks/" + props.task.id} onClick={select}>edit</Link></p>
+          <p>
+            <Link to={"/tasks/" + props.task.id} onClick={select}>edit</Link>
+          </p>
         </div>
       </CardBody>
     </Card>;
