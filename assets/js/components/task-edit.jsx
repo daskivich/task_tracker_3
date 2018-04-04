@@ -5,11 +5,30 @@ import { connect } from 'react-redux';
 import api from '../api';
 
 function TaskEdit(props) {
+  if (props.token == null) {
+    return <div>Please log in.</div>
+  }
+
   function update(ev) {
     let tgt = $(ev.target);
+    let attr = tgt.attr('name');
+    let val = tgt.val();
+
+    console.log("target attr", attr);
+    console.log("target val", val);
 
     let data = {};
-    data[tgt.attr('name')] = tgt.val();
+
+    if (attr == "completed") {
+      if (val == "true") {
+        val = true;
+      } else {
+        val = false;
+      }
+    }
+
+    data[attr] = val;
+
     let action = {
       type: 'UPDATE_EDIT_TASK_FORM',
       data: data
@@ -41,6 +60,16 @@ function TaskEdit(props) {
   let increments = _.range(0, 10080, 15);
   let options = _.map(increments, (ii) => <option key={ii}>{ii}</option>);
   let cancel_path = "/users/" + props.token.user_id;
+  let complete;
+  let incomplete;
+
+  if (props.edit_task_form.completed) {
+    complete = true;
+    incomplete = false;
+  } else {
+    complete = false;
+    incomplete = true;
+  }
 
   return <div style={{padding: "4ex"}}>
     <h2>Edit Task</h2>
@@ -66,9 +95,20 @@ function TaskEdit(props) {
         {options}
       </Input>
     </FormGroup>
-    <FormGroup>
-      <Label for="completed">Task Completed</Label>
-      <Input className="ml-3" type="checkbox" name="completed" value={props.edit_task_form.completed} onChange={update}/>
+    <FormGroup tag="fieldset">
+      Status
+      <FormGroup check>
+        <Label check>
+          <Input type="radio" name="completed" value="true" checked={complete} onChange={update} />{' '}
+          complete
+        </Label>
+      </FormGroup>
+      <FormGroup check>
+        <Label check>
+          <Input type="radio" name="completed" value="false" checked={incomplete} onChange={update} />{' '}
+          incomplete
+        </Label>
+      </FormGroup>
     </FormGroup>
     <Button onClick={submit} color="primary">Update Task</Button>
     <Link to={cancel_path} onClick={clear}>Cancel</Link>

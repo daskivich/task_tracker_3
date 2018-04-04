@@ -61,13 +61,6 @@ let empty_new_task_form = {
   user_id: "",
   title: "",
   description: "",
-  token: ""
-};
-
-let clear_new_task_form = {
-  user_id: "",
-  title: "",
-  description: "",
 };
 
 function new_task_form(state = empty_new_task_form, action) {
@@ -75,9 +68,7 @@ function new_task_form(state = empty_new_task_form, action) {
     case 'UPDATE_NEW_TASK_FORM':
       return Object.assign({}, state, action.data);
     case 'CLEAR_NEW_TASK_FORM':
-      return Object.assign({}, state, clear_new_task_form);
-    case 'SET_TOKEN':
-      return Object.assign({}, state, action.token);
+      return empty_new_task_form;
     case 'LOG_OUT':
       return empty_new_task_form;
     default:

@@ -18,11 +18,16 @@ function TaskNew(props) {
   }
 
   function submit(ev) {
-    api.submit_task(props.new_task_form);
+    let data = {
+      token: props.token.token,
+      task_params: props.new_task_form
+    };
+
+    api.submit_task(data);
     props.dispatch({
       type: 'CLEAR_NEW_TASK_FORM'
     });
-    console.log(props.new_task_form);
+    console.log(props.data);
   }
 
   function clear(ev) {
@@ -59,6 +64,7 @@ function state2props(state) {
   return {
     new_task_form: state.new_task_form,
     users: state.users,
+    token: state.token
   };
 }
 

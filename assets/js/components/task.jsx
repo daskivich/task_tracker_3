@@ -6,13 +6,21 @@ import { connect } from 'react-redux';
 function Task(props) {
   let task = props.task;
 
+  let status;
+
+  if (task.completed) {
+    status = "complete";
+  } else {
+    status = "incomplete";
+  }
+
   let shared_elements =
     <span>
       <p>{task.title}</p>
       <p>Assigned to <b>{task.user.name}</b></p>
       <p>{task.description}</p>
       <p>Time invested (in minutes): {task.time_invested}</p>
-      <p>Completed: {task.completed}</p>
+      <p>Status: {status}</p>
     </span>;
 
   function select(ev) {

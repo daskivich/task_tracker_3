@@ -34,7 +34,7 @@ class TheServer {
       method: "post",
       dataType: "json",
       contentType: "application/json; charset=UTF-8",
-      data: JSON.stringify({ token: data.token, task: data }),
+      data: JSON.stringify({ token: data.token, task_params: data.task_params }),
       success: (resp) => {
         store.dispatch({
           type: 'ADD_TASK',
