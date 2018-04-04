@@ -53,26 +53,28 @@ function UserEdit(props) {
   // TODO: fix cancel_path
   let path = "/";
 
-  return <div style={{padding: "4ex"}}>
-    <h2>Edit Account</h2>
-    <FormGroup>
-      <Label for="name">Name</Label>
-      <Input name="name" value={props.edit_user_form.name} onChange={update} />
-    </FormGroup>
-    <FormGroup>
-      <Label for="email">Email</Label>
-      <Input type="email" name="email" value={props.edit_user_form.email} onChange={update} />
-    </FormGroup>
-    <FormGroup>
-      <Label for="password">Password</Label>
-      <Input type="password" name="password" value={props.edit_user_form.password} onChange={update} />
-    </FormGroup>
-    <FormGroup>
-      <Label for="password_confirmation">Confirm Password</Label>
-      <Input type="password" name="password_confirmation" value={props.edit_user_form.password_confirmation} onChange={update} />
-    </FormGroup>
-    <Link to={path} onClick={submit} color="primary">Submit Changes</Link>
-    <Link to={path} onClick={clear} color="secondary">Cancel</Link>
+  return <div className="card">
+    <div className="card-body">
+      <h2>Edit Account</h2>
+      <FormGroup>
+        <Label for="name">name:</Label>
+        <Input name="name" value={props.edit_user_form.name} onChange={update} />
+      </FormGroup>
+      <FormGroup>
+        <Label for="email">email:</Label>
+        <Input type="email" name="email" value={props.edit_user_form.email} onChange={update} />
+      </FormGroup>
+      <FormGroup>
+        <Label for="password">password:</Label>
+        <Input type="password" name="password" value={props.edit_user_form.password} onChange={update} />
+      </FormGroup>
+      <FormGroup>
+        <Label for="password_confirmation">confirm password:</Label>
+        <Input type="password" name="password_confirmation" value={props.edit_user_form.password_confirmation} onChange={update} />
+      </FormGroup>
+      <Link to={path} onClick={submit} className="bp">submit changes</Link>
+      <Link to={path} onClick={clear} className="bs">cancel</Link>
+    </div>
   </div>;
 }
 

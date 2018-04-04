@@ -41,8 +41,7 @@ let Session = connect(({token}) => {return {token};})((props) => {
   let path = "/users/edit/" + props.token.user_id;
 
   return <div className="navbar-text">
-    hello, {props.token.user_name}!
-    <Logout />
+    Hello, {props.token.user_name}!
   </div>;
 });
 
@@ -53,7 +52,9 @@ let Logout = connect(({token}) => {return {token};})((props) => {
     });
   }
 
-  return <NavLink to="/" onClick={submit_logout}>Log Out</NavLink>;
+  return <NavItem>
+    <NavLink to="/" href="#" onClick={submit_logout} activeClassName="active" className="nav-link">logOut</NavLink>
+  </NavItem>;
 });
 
 function Nav(props) {
@@ -86,17 +87,18 @@ function Nav(props) {
     nav_links =
       <ul className="navbar-nav mr-auto">
         <NavItem>
-          <NavLink to="/" exact={true} activeClassName="active" className="nav-link">Tasks</NavLink>
+          <NavLink to="/" exact={true} activeClassName="active" className="nav-link">tasks</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to={to_my_tasks} href="#" activeClassName="active" className="nav-link">MyTasks</NavLink>
+          <NavLink to={to_my_tasks} href="#" activeClassName="active" className="nav-link">myTasks</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/users" href="#" activeClassName="active" className="nav-link">Users</NavLink>
+          <NavLink to="/users" href="#" activeClassName="active" className="nav-link">users</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to={path} href="#" onClick={select} activeClassName="active" className="nav-link">MyAccount</NavLink>
+          <NavLink to={path} href="#" onClick={select} activeClassName="active" className="nav-link">myAccount</NavLink>
         </NavItem>
+        <Logout />
       </ul>;
     session_info = <Session token={props.token} />;
   }
@@ -106,7 +108,7 @@ function Nav(props) {
   }
 
   return (
-    <nav className="navbar navbar-dark bg-dark navbar-expand">
+    <nav className="navbar navbar-dark bg-dark navbar-expand mb-3">
       <span className="navbar-brand">TaskTracker</span>
       {nav_links}
       <span className="navbar-text text-right">{session_info}</span>

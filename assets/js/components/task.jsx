@@ -16,11 +16,11 @@ function Task(props) {
 
   let shared_elements =
     <span>
-      <p>{task.title}</p>
-      <p>Assigned to <b>{task.user.name}</b></p>
+      <b>{task.title}</b>
       <p>{task.description}</p>
-      <p>Time invested (in minutes): {task.time_invested}</p>
-      <p>Status: {status}</p>
+      <p>assigned to: <b>{task.user.name}</b></p>
+      <p>minutes invested: {task.time_invested}</p>
+      <p>status: {status}</p>
     </span>;
 
   function select(ev) {

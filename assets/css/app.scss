@@ -2,3 +2,65 @@
 @import "bootstrap";
 
 body { font-size: 20pt; }
+
+.card {
+  margin-bottom: 1em;
+}
+
+.card-body {
+  background-color: #b5cde1;
+}
+
+.white {
+  color: White;
+}
+
+.bp {
+  border-radius: 5px;
+  margin-right: 5px;
+  color: black;
+  background-color: #6a9bc3;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.bp:hover {
+  background: #386890;
+}
+
+.bs {
+  border-radius: 5px;
+  color: black;
+  background-color: DarkGrey;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.bs:hover {
+  background: Grey;
+}
+
+.bd {
+  background-color: LightCoral;
+}
+
+.bd:hover {
+  background: FireBrick;
+}
+
+.alice-blue {
+  background-color: AliceBlue;
+}
+
+.incomplete {
+  background-color: MistyRose;
+}
+
+th {
+  background-color: #b5cde1;
+  color: White;
+}

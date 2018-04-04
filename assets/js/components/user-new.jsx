@@ -31,26 +31,28 @@ function UserNew(props) {
     });
   }
 
-  return <div style={{padding: "4ex"}}>
-    <h2>Create an Account</h2>
-    <FormGroup>
-      <Label for="name">Name</Label>
-      <Input name="name" value={props.new_user_form.name} onChange={update} />
-    </FormGroup>
-    <FormGroup>
-      <Label for="email">Email</Label>
-      <Input type="email" name="email" value={props.new_user_form.email} onChange={update} />
-    </FormGroup>
-    <FormGroup>
-      <Label for="password">Password</Label>
-      <Input type="password" name="password" value={props.new_user_form.password} onChange={update} />
-    </FormGroup>
-    <FormGroup>
-      <Label for="password_confirmation">Confirm Password</Label>
-      <Input type="password" name="password_confirmation" value={props.new_user_form.password_confirmation} onChange={update} />
-    </FormGroup>
-    <Button onClick={submit} color="primary">Create Account</Button>
-    <Button onClick={clear} color="secondary">Cancel</Button>
+  return <div className="card">
+    <div className="card-body">
+      <h2>Create an Account</h2>
+      <FormGroup>
+        <Label for="name">name:</Label>
+        <Input name="name" value={props.new_user_form.name} onChange={update} />
+      </FormGroup>
+      <FormGroup>
+        <Label for="email">email:</Label>
+        <Input type="email" name="email" value={props.new_user_form.email} onChange={update} />
+      </FormGroup>
+      <FormGroup>
+        <Label for="password">password:</Label>
+        <Input type="password" name="password" value={props.new_user_form.password} onChange={update} />
+      </FormGroup>
+      <FormGroup>
+        <Label for="password_confirmation">confirm password:</Label>
+        <Input type="password" name="password_confirmation" value={props.new_user_form.password_confirmation} onChange={update} />
+      </FormGroup>
+      <Button onClick={submit} color="primary">create account</Button>
+      <Button onClick={clear} color="secondary">cancel</Button>
+    </div>
   </div>;
 }
 

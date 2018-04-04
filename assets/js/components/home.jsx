@@ -17,6 +17,7 @@ function Home(props) {
     return (
       <div>
         <TaskNew />
+        <h2>Tasks</h2>
         <Feed all_users={true} match_user_id={null}/>
       </div>
     );

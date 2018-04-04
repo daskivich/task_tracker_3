@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 function User(props) {
-  return <p>{props.user.name} - <Link to={"/users/" + props.user.id}>tasks</Link></p>;
+  return <div className="card">
+    <div className="card-body">
+      {props.user.name} - <Link to={"/users/" + props.user.id}>tasks</Link>
+    </div>
+  </div>;
 }
 
 function Users(props) {

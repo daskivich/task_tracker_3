@@ -71,47 +71,51 @@ function TaskEdit(props) {
     incomplete = true;
   }
 
-  return <div style={{padding: "4ex"}}>
+  return <div>
     <h2>Edit Task</h2>
-    <FormGroup>
-      <Label for="id">Task ID</Label>
-      <Input plaintext>{props.edit_task_form.id}</Input>
-    </FormGroup>
-    <FormGroup>
-      <Label for="user_id">User</Label>
-      <Input plaintext>{props.edit_task_form.user_id}</Input>
-    </FormGroup>
-    <FormGroup>
-      <Label for="title">Title</Label>
-      <Input plaintext>{props.edit_task_form.title}</Input>
-    </FormGroup>
-    <FormGroup>
-      <Label for="title">Description</Label>
-      <Input plaintext>{props.edit_task_form.description}</Input>
-    </FormGroup>
-    <FormGroup>
-      <Label for="time_invested">Time Invested (in minutes)</Label>
-      <Input type="select" name="time_invested" value={props.edit_task_form.time_invested} onChange={update}>
-        {options}
-      </Input>
-    </FormGroup>
-    <FormGroup tag="fieldset">
-      Status
-      <FormGroup check>
-        <Label check>
-          <Input type="radio" name="completed" value="true" checked={complete} onChange={update} />{' '}
-          complete
-        </Label>
-      </FormGroup>
-      <FormGroup check>
-        <Label check>
-          <Input type="radio" name="completed" value="false" checked={incomplete} onChange={update} />{' '}
-          incomplete
-        </Label>
-      </FormGroup>
-    </FormGroup>
-    <Link to={path} onClick={submit} color="primary">Submit Changes</Link>
-    <Link to={path} onClick={clear}>Cancel</Link>
+    <div className="card">
+    <div className="card-body">
+        <FormGroup>
+          <Label for="id">task ID:</Label>
+          <Input plaintext>{props.edit_task_form.id}</Input>
+        </FormGroup>
+        <FormGroup>
+          <Label for="user_id">user:</Label>
+          <Input plaintext>{props.edit_task_form.user_id}</Input>
+        </FormGroup>
+        <FormGroup>
+          <Label for="title">title:</Label>
+          <Input plaintext>{props.edit_task_form.title}</Input>
+        </FormGroup>
+        <FormGroup>
+          <Label for="title">description:</Label>
+          <Input plaintext>{props.edit_task_form.description}</Input>
+        </FormGroup>
+        <FormGroup>
+          <Label for="time_invested">minutes invested:</Label>
+          <Input type="select" name="time_invested" value={props.edit_task_form.time_invested} onChange={update}>
+            {options}
+          </Input>
+        </FormGroup>
+        <FormGroup tag="fieldset">
+          Status
+          <FormGroup check>
+            <Label check>
+              <Input type="radio" name="completed" value="true" checked={complete} onChange={update} />{' '}
+              complete
+            </Label>
+          </FormGroup>
+          <FormGroup check>
+            <Label check>
+              <Input type="radio" name="completed" value="false" checked={incomplete} onChange={update} />{' '}
+              incomplete
+            </Label>
+          </FormGroup>
+        </FormGroup>
+        <Link to={path} onClick={submit} className="bp">submit changes</Link>
+        <Link to={path} onClick={clear} className="bs">cancel</Link>
+      </div>
+    </div>
   </div>;
 }
 
