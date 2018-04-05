@@ -14,7 +14,6 @@ function TaskNew(props) {
       type: 'UPDATE_NEW_TASK_FORM',
       data: data
     };
-    console.log(action);
     props.dispatch(action);
   }
 
@@ -28,7 +27,6 @@ function TaskNew(props) {
     props.dispatch({
       type: 'CLEAR_NEW_TASK_FORM'
     });
-    console.log(props.data);
   }
 
   function clear(ev) {
@@ -69,7 +67,6 @@ function TaskNew(props) {
 }
 
 function state2props(state) {
-  console.log("rerender@TaskNew", state);
   return {
     new_task_form: state.new_task_form,
     users: state.users,

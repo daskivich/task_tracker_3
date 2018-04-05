@@ -15,9 +15,6 @@ function UserEdit(props) {
     let attr = tgt.attr('name');
     let val = tgt.val();
 
-    console.log("target attr", attr);
-    console.log("target val", val);
-
     let data = {};
     data[attr] = val;
 
@@ -25,7 +22,6 @@ function UserEdit(props) {
       type: 'UPDATE_EDIT_USER_FORM',
       data: data
     };
-    console.log(action);
     props.dispatch(action);
   }
 
@@ -42,7 +38,6 @@ function UserEdit(props) {
     };
 
     api.update_user(data);
-    console.log(data);
   }
 
   function clear(ev) {
@@ -84,7 +79,6 @@ function UserEdit(props) {
 }
 
 function state2props(state) {
-  console.log("rerender@UserEdit", state);
   return {
     edit_user_form: state.edit_user_form,
     token: state.token

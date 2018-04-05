@@ -15,9 +15,6 @@ function TaskEdit(props) {
     let attr = tgt.attr('name');
     let val = tgt.val();
 
-    console.log("target attr", attr);
-    console.log("target val", val);
-
     let data = {};
 
     // completed value must be converted from string to boolean
@@ -35,7 +32,6 @@ function TaskEdit(props) {
       type: 'UPDATE_EDIT_TASK_FORM',
       data: data
     };
-    console.log(action);
     props.dispatch(action);
   }
 
@@ -50,7 +46,6 @@ function TaskEdit(props) {
     };
 
     api.update_task(data);
-    console.log(data);
   }
 
   function clear(ev) {
@@ -126,7 +121,6 @@ function TaskEdit(props) {
 }
 
 function state2props(state) {
-  console.log("rerender@TaskEdit", state);
   return {
     edit_task_form: state.edit_task_form,
     token: state.token
