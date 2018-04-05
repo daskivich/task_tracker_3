@@ -14,7 +14,6 @@ function UserNew(props) {
       type: 'UPDATE_NEW_USER_FORM',
       data: data
     };
-    console.log(action);
     props.dispatch(action);
   }
 
@@ -23,7 +22,6 @@ function UserNew(props) {
     props.dispatch({
       type: 'CLEAR_NEW_USER_FORM'
     });
-    console.log(props.new_user_form);
   }
 
   function clear(ev) {
@@ -61,7 +59,6 @@ function UserNew(props) {
 }
 
 function state2props(state) {
-  console.log("rerender@UserNew", state);
   return {
     new_user_form: state.new_user_form
   };
