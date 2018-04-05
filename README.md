@@ -1,5 +1,13 @@
 # TaskTracker3
 
+Design Decisions:
+
+ * stored token only once in Redux store
+ * didn't load users and tasks until after a sucessful log-in
+
+
+
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
