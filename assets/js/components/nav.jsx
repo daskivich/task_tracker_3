@@ -35,14 +35,12 @@ let LoginForm = connect(({login}) => {return {login};})((props) => {
 });
 
 let Session = connect(({token}) => {return {token};})((props) => {
-  let path = "/users/edit/" + props.token.user_id;
-
   return <div className="navbar-text">
     Hello, {props.token.user_name}!
   </div>;
 });
 
-let Logout = connect(({token}) => {return {token};})((props) => {
+let Logout = connect((state) => {return {};})((props) => {
   function submit_logout(ev) {
     props.dispatch({
       type: 'LOG_OUT'
